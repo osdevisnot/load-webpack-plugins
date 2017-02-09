@@ -1,12 +1,19 @@
 {
   "name": "load-webpack-plugins",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Conveniently Load Webpack Plugins from Package Dependencies or Webpack Builtins.",
   "main": "index.js",
   "repository": "https://github.com/abhishekisnot/load-webpack-plugins.git",
   "author": "Abhishek Shende <abhishekisnot@gmail.com>",
   "license": "MIT",
-  "keywords": ["webpack", "webpack2", "require", "load", "webpack", "plugins"],
+  "keywords": [
+    "webpack",
+    "webpack2",
+    "require",
+    "load",
+    "webpack",
+    "plugins"
+  ],
   "scripts": {
     "prepub": "rm -rf node_modules && yarn",
     "pub": "node ./setup.js && npm test && npm version patch",
