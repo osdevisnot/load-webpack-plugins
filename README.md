@@ -1,6 +1,8 @@
 # load-webpack-plugins
 
-> Conveniently Load Webpack Plugins from Package Dependencies or Webpack Builtins.
+> Conveniently Lazy Load Webpack Plugins from Webpack Builtin Plugins or from Package Dependencies.
+
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/abhishekisnot/load-webpack-plugins.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
 [![Build Status](https://travis-ci.org/abhishekisnot/load-webpack-plugins.svg?branch=master)](https://travis-ci.org/abhishekisnot/load-webpack-plugins)
 [![Greenkeeper badge](https://badges.greenkeeper.io/abhishekisnot/load-webpack-plugins.svg)](https://greenkeeper.io/)
@@ -8,66 +10,61 @@
 ## Install
 
 ```sh
-$ npm install --save-dev load-webpack-plugins
+  npm install --save-dev load-webpack-plugins
 ```
-
+ or using yarn
+ ```sh
+  yarn add load-webpack-plugins
+ ```
 
 ## Usage
 
-### Loading Webpack Built in Plugins
+### Loading Webpack Builtin Plugins
 
-Default or Built in Webpack plugins can be loaded without the nested path references.
-
-Example:
-```js
-  $.APIPlugin(options)
-  $.DllPlugin(options)
-  $.UglifyJsPlugin(options)
-```
-
-Please refer plugins.json for current list of supported built in plugins.
-
-
-### Loading from package dependencies
-
-Given a `package.json` file that has some `dependencies` or `devDependencies` within:
-
-```json
-{
-  "dependencies": {
-    "webpack-html-plugin": "*",
-    "assets-webpack-plugin": "*",
-  }
-}
-```
-OR
-```json
-{
-  "devDependencies": {
-    "webpack-html-plugin": "*",
-    "assets-webpack-plugin": "*",
-  }
-}
-```
-
-Adding this to your `webpack.config.js` :
-
-```js
-  var webpackPlugins = require('load-webpack-plugins');
-  var $ = webpackPlugins();
-```
-Or, even shorter
+Webpack Builtin plugins can be conveniently lazy loaded without remembering the nested path references.
 
 ```js
   var $ = require('load-webpack-plugins')();
+  ...
+  module.exports = function() {
+    ...
+    plugins: [
+      new $.APIPlugin(options),
+      new $.DllPlugin(options),
+      new $.UglifyJsPlugin(options),
+    ]
+    ...
+  }
 ```
 
-would result in all the webpack plugins in `package.json` to be loaded on ```$``` variable.
+Please refer [plugins.json](plugins.json) for up to date list of supported plugins.
 
-You can now access the plugins like so:
+### Loading from package dependencies
+
+Given a `package.json` file that has webpack plugins in `dependencies` or `devDependencies`:
+
+```json
+{
+  "<d|devD>ependencies": {
+    "webpack-html-plugin": "*",
+    "assets-webpack-plugin": "*",
+  }
+}
+```
+
+Webpack plugins can be conveniently lazy loaded in `webpack.config.js`.
+
 ```js
-  $.AssetsPlugin(options);
-  $.HtmlPlugin(options);
+  var $ = require('load-webpack-plugins')();
+  ...
+  module.exports = function() {
+    ...
+    plugins: [
+      new $.AssetsPlugin(options),
+      new $.HtmlPlugin(options),
+    ]
+    ...
+  }
 ```
 
 ## Todo
