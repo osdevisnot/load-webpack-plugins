@@ -48,7 +48,7 @@ module.exports = function(options) {
   options = options || {};
   var deps = {};
   // todo: use https://www.npmjs.com/package/find-up or https://www.npmjs.com/package/find-project-root
-  var pkg = require(path.join(__dirname, '..', 'package.json'));
+  var pkg = require(path.join(__dirname, '..', '..', 'package.json'));
   _webpackPlugins(deps, pkg, options);
   _pkgDeps(deps, pkg, options);
 

@@ -3,7 +3,7 @@ const rewire = require('rewire');
 const $ = rewire(path.join(__dirname, '..', 'index'));
 
 beforeAll(() => {
-  $.__set__('__dirname', path.join(__dirname, '..', 'lib'));
+  $.__set__('__dirname', path.join(__dirname, 'lib'));
 });
 
 describe('Utility Functions', () => {
