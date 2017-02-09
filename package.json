@@ -1,6 +1,6 @@
 {
   "name": "load-webpack-plugins",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Conveniently Load Webpack Plugins from Package Dependencies or Webpack Builtins.",
   "main": "index.js",
   "repository": "https://github.com/abhishekisnot/load-webpack-plugins.git",
