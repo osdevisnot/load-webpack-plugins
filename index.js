@@ -4,7 +4,15 @@ function _camelize(str) {
   function capitalize(m, p1) {
     return p1.toUpperCase();
   }
-  return str.replace('webpack-', '').replace(/-(\w)/g, capitalize).replace(/^(\w)/g, capitalize);
+  var scope = str.substr(0, str.indexOf('/') + 1);
+  var transformed = str
+    .replace(scope, '')
+    .replace('/', '.')
+    .replace('webpack-', '')
+    .replace(/-(\w)/g, capitalize)
+    .replace(/^(\w)/g, capitalize);
+  scope = scope.replace('@', '').replace('/', '.');
+  return scope + transformed;
 }
 
 function _addDep(deps, dep, depName) {
@@ -37,7 +45,7 @@ function _pkgDeps(deps, pkg) {
 }
 
 module.exports = function(options) {
-  options = options || { camelize: true, lazy: true };
+  options = options || {};
   var deps = {};
   // todo: use https://www.npmjs.com/package/find-up or https://www.npmjs.com/package/find-project-root
   var pkg = require(path.join(__dirname, '..', 'package.json'));

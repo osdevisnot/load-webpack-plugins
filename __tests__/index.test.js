@@ -11,6 +11,9 @@ describe('Utility Functions', () => {
     const capitalize = $.__get__('_camelize');
     expect(capitalize('webpack-assets-plugin')).toBe('AssetsPlugin');
     expect(capitalize('assets-webpack-plugin')).toBe('AssetsPlugin');
+    expect(capitalize('webpack-html-plugin')).toBe('HtmlPlugin');
+    expect(capitalize('html-webpack-plugin')).toBe('HtmlPlugin');
+    expect(capitalize('@scope/html-webpack-plugin')).toBe('scope.HtmlPlugin');
   });
 });
 
