@@ -69,8 +69,8 @@ Webpack plugins can be conveniently lazy loaded in `webpack.config.js`.
 
 ## Todo
 - [x] Support Webpack Plugins published as Private/Scoped NPM Packages
-- [] Support Custom patterns for Plugins Discovery
-- [] Support Custom name transform function in option.
+- [ ] Support Custom patterns for Plugins Discovery
+- [ ] Support Custom name transform function in option.
 
 ## Credit
 Thanks to @sindresorhus for awesome [load-grunt-plugins](https://github.com/sindresorhus/load-grunt-tasks)
